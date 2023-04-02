@@ -93,7 +93,7 @@ export default function RecipeItem(props) {
             <div className="face front" style={{height:"525px"}}>
               <img
                 src={props.ImageUrl}
-                className="card-img-top recipeitemimageopacity box_decrease_size_animation"
+                className="card-img-top border-primary recipeitemimageopacity box_decrease_size_animation"
                 alt="..."
               />
               <div className="card-body">
@@ -209,7 +209,17 @@ export default function RecipeItem(props) {
                   </OverlayTrigger>
                 </li>
               </ul>
-              <div className="card-img-overlay">
+              <div className="card-img-overlay"  onClick={() => {
+                        Navigate(
+                          `${
+                            !sessionStorage.getItem("auth-token") &&
+                            !localStorage.getItem("auth-token")
+                              ? "/login"
+                              : "/Individual_description"
+                          }`,
+                          { state: { RecipeItemid: props.id } }
+                        );
+                      }}>
                 <div className="row">
                   <div className="col-md-2">
                     <p className="badge recipeitembadgeopacity text-success fw-bold  fs-5 m-1">
@@ -253,9 +263,9 @@ export default function RecipeItem(props) {
                   <h3 className="mb-2 fw-bold card-title">
                     {userbyid?.user?.name}
                   </h3>
-                  <hr />
-                  <ul className="list-group list-group-flush">
-                    <div className="card-text text-dark mb- d-flex justify-content-between">
+                  <hr className="mb-1"/>
+                  <ul className="list-group mb-3 list-group-flush">
+                    <div className="card-text mb-3 text-dark mb- d-flex justify-content-between">
                       <p>
                         <i
                           className={`fa-${
@@ -304,19 +314,19 @@ export default function RecipeItem(props) {
                       ></i>
                     </div>
 
-                    <div className="card-text text-dark d-flex justify-content-evenly">
+                    <div className="card-text mb-3 text-dark d-flex justify-content-evenly">
                       <h6 className="text-dark">
                         {userbyid?.user?.Liked_Recipe?.length}
                       </h6>
                       <h6 className="text-dark">{userbyid?.totalResults}</h6>
                       <p className="text-dark">{userbyid?.TotalCommnts}</p>
                     </div>
-                    <p className="card-text text-dark d-flex justify-content-evenly">
+                    <p className="card-text mb-3 text-dark d-flex justify-content-evenly">
                       <i className="fa-heart fa-solid fs-4 text-danger"></i>
                       <i className="fa-solid fa-utensils fs-4 "></i>
                       <i className="fa-solid fs-4 fa-comment"></i>
                     </p>
-                    <p className="card-text text-dark d-flex justify-content-around">
+                    <p className="card-text mb-3 text-dark d-flex justify-content-around">
                       <i className="fa-brands fa-whatsapp  fs-2 fw-bold text-success"></i>
                       <i className="fa-brands fa-instagram   fs-2 fw-bold text-danger"></i>
                       <i className="fa-brands fa-facebook   fs-2 fw-bold text-primary"></i>
