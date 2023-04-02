@@ -223,9 +223,7 @@ export default function Individual_Recipe() {
                                 {element.Likes}
                               </span>
                             </div>
-                            <div className="col-md-3">
-                              <span className="monospaced">Write a Review</span>
-                            </div>
+                            
                           </div>
                           <div className="col-md-12">
                             <p className="description">
@@ -909,7 +907,7 @@ export default function Individual_Recipe() {
                                       </div>
 
                                       {/* leave a comment */}
-                                      <div className="bg-white border border-primary rounded shadow-sm box_decrease_size_animationforindividualrecipe p-4  rating-review-select-page">
+                                      <div id="LeaveAComment" className="bg-white border border-primary rounded shadow-sm box_decrease_size_animationforindividualrecipe p-4  rating-review-select-page">
                                         <h5 className="mb-4">Leave Comment</h5>
                                         <p className="mb-2">Rate the Place</p>
                                         <div className="mb-4">
