@@ -132,7 +132,8 @@ font-size: 30px;
  
 }
 .logoofwebsite{
-  padding-top: 20px;
+  padding-top: 10px;
+
   padding-left: 10px;
 
 }
@@ -142,9 +143,12 @@ font-size: 30px;
 }
 @media(max-width:650px){
   .logoofwebsite{
-    padding-top: 20px;
+  padding-top: 10px;
     padding-left: 0px;
   
   
   }
+}
+.nextui-c-iwmZdB-iiIdOsz-css {
+  width: 100%!important;
 }

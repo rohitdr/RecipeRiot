@@ -123,12 +123,12 @@ export default function RecipeItem(props) {
                 <h4 className="card-subtitle mb-2 text-dark fw-bold recipeitemtext ">
                   {props.title}
                 </h4>
-                <p className="card-text text-dark recipeitemtext">
+                <p className="card-text mb-1 text-dark recipeitemtext">
                   {" "}
                   {props.Ingridiants}
                 </p>
 
-                <div className="card-text text-dark d-flex justify-content-between">
+                <div className="card-text mb-1 text-dark d-flex justify-content-between">
                   <p>
                     <i
                       className={`fa-${

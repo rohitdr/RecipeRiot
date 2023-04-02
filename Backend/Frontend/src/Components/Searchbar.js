@@ -121,7 +121,7 @@ export default function Searchbar() {
         <Navbar.Brand css={{ mr: "$4" }}>
           <Navbar.Toggle aria-label="toggle navigation" showIn="md" />
 
-          <p className="navbar-brand d-none d-sm-block">
+          <p className="navbar-brand pt-0 d-none d-sm-block">
             {/* <motion.div animate={{x:[]}} transition={{duration:5}} > */}
             <img
               src="Reciperiotlogo.png"
@@ -132,7 +132,7 @@ export default function Searchbar() {
             />
             {/* </motion.div> */}
           </p>
-          <Text color="inherit" css={{ mr: "$11" }} hideIn="xs">
+          <Text color="inherit" className="pt-0" css={{ mr: "$11" }} hideIn="xs">
             <span className="navbar-brand ">
               <span className="name text-dark  fw-bold">
                 <span className="R">R</span>
@@ -1509,7 +1509,7 @@ export default function Searchbar() {
                       Navigate("/login");
                     }}
                   >
-                    <p className="px-4 pt-3 text-dark searchbardropdown w-100">
+                    <p className="px-4  text-dark searchbardropdown w-100">
                       {" "}
                       Login
                     </p>
@@ -1522,7 +1522,7 @@ export default function Searchbar() {
                       Navigate("/signUp");
                     }}
                   >
-                    <p className="px-4 pt-2 text-dark searchbardropdown w-100">
+                    <p className="px-4  text-dark searchbardropdown w-100">
                       {" "}
                       Sign Up
                     </p>

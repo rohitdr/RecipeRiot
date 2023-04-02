@@ -515,11 +515,7 @@ width: 150px;
 color: black;
 
 }
-.navbarhome{
-  padding-top: 16px;
 
- 
-}
 @media only screen and (min-width: 1600px) {
   .homenewrecipe{
     max-width: 25%!important;
