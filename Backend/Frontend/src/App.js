@@ -35,6 +35,7 @@ import Admin from "./Components/Admin";
 import { AnimatePresence } from "framer-motion";
 import EditUserAdmin from "./Components/EditUserAdmin";
 import Alert from "./Components/Alert";
+import Chat from "./Components/Chat";
 
 function App() {
   const context = useContext(RecipeContext);
@@ -70,7 +71,10 @@ function App() {
         <Routes key={location.pathname} location={location}>
           <Route exact path="/login" element={<Login></Login>} />
 
-          <Route exact path="/home" element={<Home></Home>} />
+          <Route exact path="/home" element={
+          // <Home></Home>
+          <Chat></Chat>
+          } />
           <Route
             exact
             path="/Edituser"

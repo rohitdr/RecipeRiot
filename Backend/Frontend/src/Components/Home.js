@@ -7,6 +7,8 @@ import InternalServerError from "./InternalServerError";
 import RecipeItem from "./RecipeItem";
 import AnimatedPage from "./AnimatedPage";
 import { AnimatePresence, motion } from "framer-motion";
+import {Configuration, OpenAIApi } from "openai";
+
 export default function Home() {
   /* Setting the state of the component. */
 
@@ -16,6 +18,59 @@ export default function Home() {
     Subject: "",
     Message: "",
   });
+
+
+
+
+
+
+
+ 
+const getairesult = async()=>{
+
+    try {
+
+      const response = await fetch(
+        `${process.env.REACT_APP_Fetch_Api_Start}/recipe/findInAi`,
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+           
+          },
+          body: JSON.stringify({ question: document.getElementById("Message").value}),
+        }
+      );
+
+      let result = await response.json();
+      result.choices.map((ele)=>{
+console.log(ele.text)
+  })
+   
+    } catch (error) {
+
+      console.log(error.message);
+    }
+
+console.log('jol')
+}
+    
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const [cuisineactive, setcuisineactive] = useState(0);
   const [newlyarriveddivstate, setnewlyarriveddivstate] = useState(0);
@@ -973,7 +1028,7 @@ export default function Home() {
                       </div>
 
                       <div className="text-center">
-                        <button type="submit" onClick={contactussubmitBUTTON}>
+                        <button type="submit" onClick={getairesult}>
                           Send Message
                         </button>
                       </div>

@@ -6,6 +6,8 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const fetchUser = require("../Middleware/fetchUser");
 const User = require("../Modals/User.js");
+const {Configuration, OpenAIApi }=require("openai")
+
 
 /* Fetching all the recipes from the database. */
 router.get("/allRecipes", fetchuser, async (req, res) => {
@@ -511,4 +513,28 @@ router.post("/commentreicpe", fetchuser, async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+router.post("/findInAi", async (req, res) => {
+  try {
+    const question = req.body.question;
+const openai = new OpenAIApi( new Configuration({
+  apiKey:"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",
+
+
+}))
+ const completion = await openai.createCompletion({
+    model: "text-davinci-002",
+    prompt: question,
+    max_tokens:2000 ,
+  });
+//   completion.data.choices.map((ele)=>{
+// console.log(ele.text)
+//   })
+  res.json(completion.data);
+
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = router;
