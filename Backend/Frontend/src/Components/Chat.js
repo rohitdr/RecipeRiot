@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './chat.css'
 import { Input,Button } from '@nextui-org/react';
+import RecipeContext from "../Context/RecipeContext";
 import {Configuration, OpenAIApi } from "openai";
 
 export default function Chat() {
+    const context = useContext(RecipeContext)
+    const {setProgress} = context
     const [inpuresultarray,setinpuresultarray]=useState([]
     )
     const getairesult = async()=>{
 
 
         try {
-    
+    setProgress(30)
           const response = await fetch(
             `${process.env.REACT_APP_Fetch_Api_Start}/recipe/findInAi`,
             {
@@ -23,18 +26,18 @@ export default function Chat() {
               body: JSON.stringify({ question: document.getElementById("Message").value}),
             }
           );
-    
+          setProgress(50)
           let result = await response.json();
           
       
 
-   
+          setProgress(70)
             setinpuresultarray(inpuresultarray.concat([{input:document.getElementById("Message").value,output:      result.choices[0].text.split(".")}]))
               
-       
+            setProgress(100)
        document.getElementById("Message").value=""
         } catch (error) {
-    
+            setProgress(100)
           console.log(error.message);
         }
     
@@ -109,12 +112,12 @@ export default function Chat() {
                 </div>
                 <div class="chat-history">
                     <ul class="m-b-0">
-                    <li class="clearfix">
+                    <li class="clearfix ">
                             <div class="message-data text-right">
                                 <span class="message-data-time">{new Date().toLocaleTimeString()}</span>
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar"/>
                             </div>
-                            <div class="message other-message float-right">How can I help You </div>
+                            <div class="message other-message float-right boxshadow">How can I help You </div>
                         </li>
                     { inpuresultarray && inpuresultarray?.map((ele)=>{ 
               return  <div >
@@ -123,14 +126,14 @@ export default function Chat() {
                             <div class="message-data">
                                 <span class="message-data-time">{new Date().toLocaleTimeString()}</span>
                             </div>
-                            <div class="message my-message"> {ele.input}</div>
+                            <div class="message my-message boxshadow" > {ele.input}</div>
                         </li> 
                         <li class="clearfix">
                             <div class="message-data text-right">
                                 <span class="message-data-time">{new Date().toLocaleTimeString()}</span>
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png"  alt="avatar"/>
                             </div>
-                            <div class="message other-message float-right"> {ele?.output?.map((element)=>{ return <div>{element}</div>})} </div>
+                            <div class="message other-message float-right boxshadow"> {ele?.output?.map((element)=>{ return <div>{element}</div>})} </div>
                         </li></div>
                         })}
                     </ul>
@@ -149,7 +152,9 @@ export default function Chat() {
           name='Message'
             id='Message' 
           contentLeft={<i class="fa fa-send"></i>}
-          contentRight={<i class="fa-solid fa-circle-arrow-right" onClick={getairesult}></i>}
+          contentClickable={true}
+         contentRight={<i class="fa-solid fa-circle-arrow-right fs-4"  onClick={getairesult}></i>}
+         
         />
                         {/* <input type="button" value="submit" onClick={getairesult}/>                                   */}
                     </div>

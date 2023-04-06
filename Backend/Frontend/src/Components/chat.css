@@ -131,7 +131,8 @@
 }
 
 .chat .chat-history .my-message {
-    background: #efefef
+    background: #e8f3f0;
+
 }
 
 .chat .chat-history .my-message:after {
@@ -149,7 +150,7 @@
 }
 
 .chat .chat-history .other-message {
-    background: #e8f1f3;
+    background: #e8f3f0;
 
 }
 
@@ -239,4 +240,7 @@
         height: calc(100vh - 350px);
         overflow-x: auto
     }
+}
+.boxshadow{
+    box-shadow: 10px 5px 5px #198754;
 }

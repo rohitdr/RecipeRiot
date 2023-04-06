@@ -517,7 +517,7 @@ router.post("/findInAi", async (req, res) => {
   try {
     const question = req.body.question;
 const openai = new OpenAIApi( new Configuration({
-  apiKey:"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",
+  apiKey:"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",
 
 
 }))
